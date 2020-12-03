@@ -76,7 +76,7 @@ ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 ax.xaxis.set_ticks_position('bottom')
-plt.xlabel("Optical Thickness, $λ_{0}$ [$n_{2}h$]")
+plt.xlabel("Optical Thickness, [$h/(λ_{0}/n_{2})$]")
 plt.ylabel("ℛ",fontsize=14)
 
 # export figure
