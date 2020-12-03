@@ -8,8 +8,8 @@ Created on Wed Dec  2 22:05:51 2020
 import numpy as np
 import matplotlib.pyplot as plt
 
-fig1 = plt.figure(figsize=(22.5,10))
-gs = fig1.add_gridspec(4, 3)
+fig1 = plt.figure(figsize=(15,12))
+gs = fig1.add_gridspec(6, 2)
 plt.tight_layout()
 # =============================================================================
 # 
@@ -18,13 +18,13 @@ H, TMM, Theory = np.loadtxt("R_i1.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[0:1,0])
+fig1.add_subplot(gs[0,0])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
 plt.plot(H, Theory, c='g', label='Theory Prediction')
 plt.xlim(0,1)
-plt.ylim(0.03, 0.05)
+plt.ylim(0.035, 0.05)
 plt.xlabel("Optical Thickness, [$h / (λ_{0} / n_{1})$]",
        fontsize=12)
 plt.ylabel("ℛ",
@@ -38,13 +38,13 @@ H, TMM, Theory = np.loadtxt("R_i4.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[1:2,0])
+fig1.add_subplot(gs[1,0])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
 plt.plot(H, Theory, c='g', label='Theory Prediction')
 plt.xlim(0,1)
-plt.ylim(0.03, 0.05)
+plt.ylim(0.035, 0.05)
 plt.xlabel("Optical Thickness, [$h / (λ_{0} / n_{1})$]",
        fontsize=12)
 plt.ylabel("ℛ",
@@ -78,7 +78,7 @@ H, TMM, Theory = np.loadtxt("R_i3.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[0:2,2])
+fig1.add_subplot(gs[2:4,0])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
@@ -98,7 +98,7 @@ H, TMM, Theory = np.loadtxt("R_i5.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[2:4,0])
+fig1.add_subplot(gs[2:4,1])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
@@ -118,7 +118,7 @@ H, TMM, Theory = np.loadtxt("R_i6.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[2:4,1])
+fig1.add_subplot(gs[4:6,0])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
@@ -138,7 +138,7 @@ H, TMM, Theory = np.loadtxt("R_i7.txt",
                             unpack=True,
                             delimiter='       ',
                             skiprows=1)
-fig1.add_subplot(gs[2:4,2])
+fig1.add_subplot(gs[4:6,1])
 plt.scatter(H[0:-1:20], TMM[0:-1:20], 
             c='k', label='TMM Evaluation',
             marker='x')
@@ -153,6 +153,6 @@ plt.title("n = 3.00")
 plt.legend(loc='best')
 
 plt.tight_layout()
-plt.savefig("figure.png",
+plt.savefig("figure2.png",
             bbox_inches='tight',
             dpi=300)
