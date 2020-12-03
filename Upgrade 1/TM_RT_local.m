@@ -61,6 +61,8 @@ for i = 1:length(w_in)
     T_out(i) = abs(t).^2*p_l/p_f;
 end
 
+% ============================================================ EXPORT === %
+
 fileID = fopen('RT2B.txt','w');
 fprintf(fileID,'%6s %12s %18s\n','lam','R','T');
 fprintf(fileID,'%6.1f %12.4f %12.4f\r\n',[wav(w_in);R_out;T_out]);
