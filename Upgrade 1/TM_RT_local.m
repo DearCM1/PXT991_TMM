@@ -1,6 +1,6 @@
-%This code was last updated to check the results in comparision to the
-%those obtained for a thin dielectric film in Born, Optics, page 64.
-
+% Last Updated; 2020/11/28 20:18; Calum
+% added generalisations to AB slab multipications for N=0.5,1.0,1.5,2.0...
+% ======================================================== PARAMETERS === %
 % first and last p_values in the TE polarisation
 theta_1 = 0.0;
 n_f = 1.00;
@@ -15,7 +15,7 @@ d_1 = 53.10e-9;
 d_2 = 46.10e-9;
 p_1 = p(n_1, theta_1);
 p_2 = p(n_2, theta_1);
-N = 20.0;
+N = 20.5;
 
 % value of the PBG centre frequency
 c = 2.99792458e+8;
@@ -28,6 +28,7 @@ w_0 = w_calc(467e-9);
 w_min = w_0*0.5;
 w_max = w_0*1.5;
 
+% ========================================================== TMM LOOP === %
 %for loop to find R,T as a function of frequency
 w_in = w_min:0.005*w_0:w_max;
 T_out = zeros([1,length(w_in)]);
@@ -65,30 +66,27 @@ fprintf(fileID,'%6s %12s %18s\n','lam','R','T');
 fprintf(fileID,'%6.1f %12.4f %12.4f\r\n',[wav(w_in);R_out;T_out]);
 fclose(fileID);
 
-%plot of R and log(T) vs w/w_0
-rel_w = w_in/w_0;
+% ========================================================== PLOTTING === %
+% R graph as a function of wavelength
 figure(1)
-plot(wav(w_in),R_out)
-xlabel('w')
-ylabel('R')
+plot(w_calc(w_in),R_out)
 xlim([400,525])
+ylim([0,1])
+xlabel('Wavelength, lambda (nm)')
+ylabel('R')
+
+% T not in use
 %figure(2)
 %semilogy(rel_w,T_out)
 %xlabel('w/w_0')
 %ylabel('T')
 
 
-% FUNCTIONS % =============================================================
+% ========================================================= FUNCTIONS === %
 % angular frequency calculator
 function ang_freq = w_calc(lambda)
     c = 2.99792458e+8;
     ang_freq = 2 * pi * c / lambda;
-end
-
-% wavelength calculator
-function wavelength = wav(w)
-    c = 2.99792458e+8;
-    wavelength = 1e9 * 2 * pi * c ./ w;
 end
 
 % p_value calculator
