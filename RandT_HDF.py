@@ -5,15 +5,24 @@ Created on Sat Nov 28 14:19:57 2020
 
 @author: Calum
 """
+# =============================================================================
+# IMPORTS
+# =============================================================================
 import numpy as np
 import matplotlib.pyplot as plt
 
+# =============================================================================
+# FUNCTIONS
+# =============================================================================
+# reflection coefficient
 def rij(ni, nj):
     return (ni - nj)/(ni + nj)
 
+# transmission coefficient
 def tij(ni, nj):
     return (2 * ni)/(ni + nj)
 
+# reflectivity
 def R(n1, n2, n3, lam0, theta2, h):
     beta = (2 * np.pi / lam0) * (n2 * h) * np.cos(theta2)
     r12 = rij(n1, n2)
@@ -22,7 +31,9 @@ def R(n1, n2, n3, lam0, theta2, h):
     denominator = 1 + ((r12**2)*(r23**2)) + (2  * r12 * r23 * np.cos(2 * beta))
     return numerator / denominator
 
-# parameters
+# =============================================================================
+# PARAMETERS
+# =============================================================================
 n1 = 1.
 n2 = np.array([1.0, 1.2, 1.4, 1.5, 1.7, 2.0, 3.0])
 n3 = 1.5
@@ -30,13 +41,16 @@ lam = 1500e-9
 h = lam / n2
 theta2 = 0
 
-# plotting setup
+# =============================================================================
+# PLOTTING
+# =============================================================================
+# plot initialise
 fig = plt.figure()
 ax = plt.subplot(121)
-colour = np.array([['magenta', 'solid'],
+colour = np.array([['green', 'solid'],
                    ['black', 'dashed'],
                    ['black', 'solid'],
-                   ['cyan', (0, (5, 7.5))],
+                   ['black', (0, (5, 5))],
                    ['black', 'dotted'],
                    ['black', 'dashdot'],
                    ['black', 'solid']], dtype=object)
@@ -65,4 +79,5 @@ ax.xaxis.set_ticks_position('bottom')
 plt.xlabel("Optical Thickness, $λ_{0}$ [$n_{2}h$]")
 plt.ylabel("ℛ",fontsize=14)
 
+# export figure
 plt.savefig("fig1.png", bbox_inches='tight', dpi=300)
