@@ -15,14 +15,11 @@ d_1 = 53.10e-9;
 d_2 = 46.10e-9;
 p_1 = p(n_1, theta_1);
 p_2 = p(n_2, theta_1);
-N = 20.5;
+N = 20.5;  %N periods of stratified media
 
 % value of the PBG centre frequency
-c = 2.99792458e+8;
-D = d_1 + d_2;
-n_avg = (d_1*n_1+d_2*n_2)/D;
-%w_0 = pi*c/(n_avg*D);
-w_0 = w_calc(467e-9);
+lambda = 476e-9;
+w_0 = w_calc(lambda);
 
 %range of frequencies
 w_min = w_0*0.5;
@@ -62,7 +59,6 @@ for i = 1:length(w_in)
 end
 
 % ============================================================ EXPORT === %
-
 fileID = fopen('RT2B.txt','w');
 fprintf(fileID,'%6s %12s %18s\n','lam','R','T');
 fprintf(fileID,'%6.1f %12.4f %12.4f\r\n',[wav(w_in);R_out;T_out]);
