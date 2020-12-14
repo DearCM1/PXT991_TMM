@@ -16,11 +16,11 @@ import matplotlib.pyplot as plt
 R, w = np.loadtxt("R_i.txt",
                   unpack=True,
                   skiprows=1,
-                  delimiter='      ')
+                  delimiter='    ')
 T, w = np.loadtxt("T_i.txt",
                   unpack=True,
                   skiprows=1,
-                  delimiter='      ')
+                  delimiter='  ')
 # =============================================================================
 # Plotting
 # =============================================================================

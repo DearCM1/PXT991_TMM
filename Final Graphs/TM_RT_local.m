@@ -79,11 +79,11 @@ ylabel('T')
 % ============================================================ EXPORT === %
 fileID = fopen('R_i.txt','w');
 fprintf(fileID,'%6s %12s\n','R','w/w0');
-fprintf(fileID,'%6.5f %12.5f\n',[R_out;rel_w]);
+fprintf(fileID,'%6.7f %12.7f\n',[R_out;rel_w]);
 fclose(fileID);
 fileID = fopen('T_i.txt','w');
-fprintf(fileID,'%6s %12s\n','T','w/w0');
-fprintf(fileID,'%6.5f %12.5f\n',[T_out;rel_w]);
+fprintf(fileID,'%6s %10s\n','T','w/w0');
+fprintf(fileID,'%6.7f %10.7f\n',[T_out;rel_w]);
 fclose(fileID);
 
 % ========================================================= FUNCTIONS === %
